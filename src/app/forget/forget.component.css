@@ -1,0 +1,5 @@
+/* styles.css or your custom CSS file */
+.alertify-notifier {
+  left: 200px; /* Adjust the horizontal position from the left as needed */
+  top: 200px; /* Adjust the vertical position from the top as needed */
+}

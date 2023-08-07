@@ -1,0 +1,19 @@
+  .header-animation {
+    background-size: cover;
+    animation: fadeBackground 5s  normal;
+  }
+
+  @keyframes fadeBackground {
+    0% {
+      opacity: 0.5;
+    }
+    25%{
+      opacity:.6 ;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }

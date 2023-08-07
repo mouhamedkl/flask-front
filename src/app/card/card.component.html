@@ -1,0 +1,53 @@
+<header class="bg-dark py-5" style="background-image: url('../../assets/images/slider2/bg3.jpg')">
+  <div class="container px-5 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="text-white ">Offres</h1>
+    </div>
+  </div>
+
+</header>
+<section class="internship-template">
+
+
+
+
+  <div class="container">
+    <div class="row justify-content-center mt-4" *ngFor="let x of liste" [@fadeInAnimation]>
+      <div class="col-md-8 col-xl-8">
+        <div class="card internship-card shadow-lg" [@fadeInAnimation]>
+          <div class="card-body">
+            <div class="text-container">
+              <div class="button-save">
+                <button class="btn btn"><img src="../../assets/img/save.ico" alt="" class="save-image"></button>
+              </div>
+              <h5 class="card-title">{{ x.name }}</h5>
+              <h6 class="card-subtitle">{{ x.body }}</h6>
+              <ul class="card-list">
+                <li class="card-list-item">
+                  <i class="bi bi-pencil-fill"></i>
+                  {{ x.date | date }}
+                </li>
+                <li class="card-list-item">
+                  <i class="bi bi-calendar"></i>
+                  {{ x.dure }}
+                </li>
+                <li class="card-list-item">
+                  <i class="bi bi-geo-alt"></i>
+                  {{ x.location }}
+                </li>
+                <li class="card-list-item">
+                  <i class="bi bi-link"></i>
+                  <a href="{{ x.link }}" target="_blank" class="link">{{ x.link }}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="button-container">
+              <a [routerLink]="['/details', x.id]" class="btn btn-outline-primary"><i
+                  class="bi bi-info-circle-fill"></i> View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
