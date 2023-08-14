@@ -14,24 +14,25 @@ export class LoginComponent implements OnInit {
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.api.setIsLoggedIn(false)
   }
   login(form: NgForm) {
     if (form.valid) {
       this.api.login(form.value).subscribe(
         (response: any) => {
-          console.log(response.token);
-          localStorage.setItem("accessToken", response.data);
+          console.log(response);
+          localStorage.setItem("accessToken", response.token);
+          localStorage.setItem("id", response.id);
+          this.api.saveToken(response.token)
           this.api.setIsLoggedIn(true)
           alertify.set('notifier', 'position', 'top-center');
           alertify.success(' Login successfully ',1);
-          setTimeout(() => {
-            this.router.navigate(['/home']); // Replace '/dashboard' with the correct route you want to navigate to after login
-          }, 2000); // Change the delay as needed
+          this.router.navigate(['/offre']); // Replace '/dashboard' with the correct route you want to navigate to after login
+
         },
         (error) => {
           // Handle the API error, if needed
           console.error(error);
+          alertify.set('notifier', 'position', 'top-center');
           alertify.error("User with this email already exists");
         }
       );

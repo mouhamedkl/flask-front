@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
     hideNavbar: boolean = false;
   logout(){
     this.api.logout()
+    this.router.navigate(['/home'])
   
   }
   ngOnInit(): void {

@@ -10,19 +10,22 @@ import { NewpassComponent } from './newpass/newpass.component';
 import { AboutComponent } from './about/about.component';
 import { ContatcComponent } from './contatc/contatc.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guard/auth.guard';
+import { SavedEmailsComponent } from './saved-emails/saved-emails.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomeComponent},
-  {path:'offre',component:CardComponent},
-  {path:'details/:id',component:DetailsComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'offre',component:CardComponent,canActivate:[AuthGuard]},
+  {path:'details/:id',component:DetailsComponent,canActivate:[AuthGuard]},
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'forget',component:ForgetComponent},
   {path:'newpassword/:token',component:NewpassComponent},
   {path:'about',component:AboutComponent},
-  {path:'contact',component:ContatcComponent}
+  {path:'contact',component:ContatcComponent},
+  {path:'save',component:SavedEmailsComponent,canActivate:[AuthGuard]},
 ];
 
 @NgModule({

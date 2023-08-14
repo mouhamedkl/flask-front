@@ -15,7 +15,7 @@ import { NewpassComponent } from './newpass/newpass.component';
 import { AboutComponent } from './about/about.component';
 import { ContatcComponent } from './contatc/contatc.component';
 import { HomeComponent } from './home/home.component';
-
+import { SavedEmailsComponent } from './saved-emails/saved-emails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,14 +29,19 @@ import { HomeComponent } from './home/home.component';
     AboutComponent,
     ContatcComponent,
     HomeComponent,
-    
+    SavedEmailsComponent,
+
+
+
   ],
   imports: [
-  BrowserModule,
+
+BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

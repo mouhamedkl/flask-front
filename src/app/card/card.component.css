@@ -1,9 +1,17 @@
-@media (max-width: 767.98px) { .border-sm-start-none { border-left: none !important; } }
+/* Media Query for Small Screens */
+@media (max-width: 767.98px) {
+  .border-sm-start-none {
+    border-left: none !important;
+  }
+}
+
+/* Styling for Internship Template */
 .internship-template {
   background-color: #f7f7f7;
   padding: 50px 0;
 }
 
+/* Styling for Internship Card */
 .internship-card {
   border: none;
   border-radius: 10px;
@@ -42,76 +50,103 @@
   margin-right: 10px;
 }
 
-/* Styling for the sidebar */
-.sidebar {
-  height: 30%;
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #f7f7f7;
-  margin-top: 200px;
-}
-
-.sidebar h2 {
-  color: #fff;
-  padding-left: 20px;
-}
-
-.sidebar .nav-link {
-  color: #1f0404;
-  padding: 10px 20px;
-}
-
-.sidebar .nav-link:hover {
-  background-color: #736262;
-}
-
 /* Styling for the main content */
 .main-content {
   margin-left: 250px; /* Width of the sidebar */
   padding: 20px;
 }
 
-
-
+/* Media Query for Button Container (min-width: 500px) */
 @media (min-width: 500px) {
   .button-container {
     position: absolute;
-    top: 215px;
-    left: 82%;
+    top: 165px;
+    left: 75%;
     transform: translate(-10%, -50%);
-    z-index: 0;
   }
 }
+
+/* Media Query for Button Save (min-width: 250px) */
 @media (min-width: 250px) {
   .button-save {
     position: absolute;
     top: 2px;
-    left: 90%;
+    left: 89%;
   }
-}
-/* .save-image {
-  animation: spin 2s linear infinite;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} */
-a.active {
-  color: blue;
-}
+/* Removed animation for save-image */
 .btn {
   border: none;
 }
-a.active,
-a.btn.active {
-  background-color: yellow;
+
+/* Media Query for Main Content Padding (min-width: 991.98px) */
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
 }
 
+/* Sidebar Styling */
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  width: 240px;
+}
 
+/* Media Query for Responsive Sidebar (max-width: 991.98px) */
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(66, 52, 52, 0.16), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+  /* Add some custom styling */
+  #sidebarMenu {
+    background-color: #f7f7f7;
+  }
+
+  .list-group-item {
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease;
+  }
+
+  .list-group-item:hover {
+    background-color: #e0e0e0;
+  }
+
+  /* Add some additional styling for a creative look */
+  .list-group-item {
+    padding: 10px 0px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    text-decoration: none;
+    color: #782020;
+  }
+
+  .list-group-item i {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }

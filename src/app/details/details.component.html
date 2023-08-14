@@ -1,40 +1,74 @@
-<header class="bg-dark py-5" style="background-image: url('../../assets/images/slider2/bg3.jpg')">
-  <div class="container px-5 px-lg-5 my-5">
-    <div class="text-center text-white">
-      <h1 class="text-white ">Details</h1>
-    </div>
-  </div>
-
-</header>
-<section id="home" class="no-padding">
-  <div  class="cd-hero">
-
-
-
-</div><!--/ Main slider end -->
-</section> <!--/ Slider end -->
-
-
 <body>
-    <main class="container py-5"   >
-        <div class="row" >
-            <div class="col-md-6 mx-auto">
-                <div class="card shadow p-4" >
-                    <!-- Display the details of the internship offer here -->
-                    <h2 class="mb-4">Company: ACME Corporation</h2>
-                    <p><strong>Position:</strong> {{ liste.body }}</p>
-                    <p><strong>Location:</strong> City, Country</p>
-                    <p><strong>Duration:</strong> 3 months</p>
-                    <p><strong>Start Date:</strong> August 15, 2023</p>
-                    <p><strong>Application Deadline:</strong> July 31, 2023</p>
-                    <hr>
-                    <p><strong>Description:</strong></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget semper nisi. Nulla eu rhoncus ex. Etiam fermentum in lectus vel euismod. Nullam ullamcorper lectus nec libero accumsan, in venenatis dui sagittis. Integer sollicitudin, elit at tempus posuere, neque nibh posuere justo, sit amet gravida elit urna vitae neque. Vivamus venenatis feugiat quam vel egestas.</p>
-                </div>
+  <header class="bg-dark py-5" style="background-image: url('../../assets/images/slider2/bg3.jpg')">
+      <div class="container px-5 px-lg-5 my-5">
+          <div class="text-center text-white">
+              <h1 class="text-white">Details</h1>
+          </div>
+      </div>
+  </header>
+
+  <main class="container py-5" *ngIf="!value">
+      <div class="row">
+          <div class="col-md-12 mx-auto">
+              <div class="card shadow-lg p-4 position-relative">
+                  <!-- Innovative Button (moved to top left) -->
+                  <div class="position-absolute top-0 end-0 mt-4 p-2">
+                      <button (click)="openModal(true)"  class="btn btn-primary">Apply Now</button>
+                  </div>
+
+                  <h2 class="mb-4">Company: {{ get_email.name }}</h2>
+                  <p><strong>Skills:</strong> {{ get_email.skills }}</p>
+                  <p><strong>Location:</strong> {{ get_email.location }}</p>
+                  <p><strong>Duration:</strong> {{ get_email.dure }}</p>
+                  <p><strong>Date Creation:</strong> {{ get_email.date }}</p>
+                  <p><strong>Deadline:</strong> {{ get_email.date_limit }}</p>
+                  <hr>
+                  <p><strong>Description:</strong></p>
+                  <p>{{ get_email.body }}</p>
+              </div>
+          </div>
+      </div>
+  </main>
+  <main class="container py-5" *ngIf="value">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="card shadow-lg p-4 position-relative">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Apply Now</h4>
+                <button type="button" class="close" aria-label="Close" (click)="openModal(false)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form  #emailForm="ngForm">
+                  <div class="mb-3">
+
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject"  name="subject" [(ngModel)]="subject" required >
+                  </div>
+                  <div class="mb-3">
+
+                    <label for="attachment" class="form-label">Upload Resume</label>
+                    <input type="file" class="file-control" id="attachment" name="attachment" (change)="onFileChange($event)" accept=".pdf,.doc,.docx,.txt">
+                  </div>
+                  <div class="mb-3">
+                    <input type="hidden" id="email" name="email" [(ngModel)]="email" required>
+                    <label for="message" class="form-label">Lettre de Motivation</label>
+                    <textarea class="form-control" id="message" [(ngModel)]="message" name="message" rows="4"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="openModal(false)">Close</button>
+                    <button type="submit" class="btn btn-danger "  (click)="onSubmit()">Send</button>
+                  </div>
+                </form>
+              </div>
+
+
+
+
+
             </div>
         </div>
-    </main>
-
-    <!-- Add Bootstrap JS and Popper.js (required for certain Bootstrap components) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </div>
+</main>
 </body>

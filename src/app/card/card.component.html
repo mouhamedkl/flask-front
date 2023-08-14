@@ -6,26 +6,70 @@
   </div>
 
 </header>
+
 <section class="internship-template">
 
 
+<!--Main layout-->
+  <div class="container py-5"  >
 
 
-  <div class="container">
-    <div class="row justify-content-center mt-4" *ngFor="let x of liste" [@fadeInAnimation]>
-      <div class="col-md-8 col-xl-8">
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky">
+          <h1>FILTER :</h1>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="dropdown " role="button" (click)="filterEmails('cloud')">
+                machine learning
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="dropdown " role="button" (click)="filterEmails('cloud')">
+                data science
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="dropdown " role="button" (click)="filterEmails('cloud')">
+                cloud
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="dropdown " role="button" (click)="filterEmails('cloud')">
+                big data
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="dropdown " role="button" (click)="filterEmails('cloud')">
+                blockchain
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="dropdown " role="button" (click)="filterEmails('web development')">
+                web development
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+    <div class="row justify-content-center mt-4" *ngFor="let x of data" [@fadeInAnimation]>
+      <div class="col-md-8 col-xl-10">
         <div class="card internship-card shadow-lg" [@fadeInAnimation]>
           <div class="card-body">
             <div class="text-container">
               <div class="button-save">
-                <button class="btn btn"><img src="../../assets/img/save.ico" alt="" class="save-image"></button>
+                <button (click)="onSave(x)" class="btn btn"><img src="../../assets/images/save.png" alt="" class="save-image"></button>
               </div>
-              <h5 class="card-title">{{ x.name }}</h5>
-              <h6 class="card-subtitle">{{ x.body }}</h6>
+
+              <h5 class="card-title"> <span>{{ x.name }}</span></h5>
+
               <ul class="card-list">
+
                 <li class="card-list-item">
                   <i class="bi bi-pencil-fill"></i>
-                  {{ x.date | date }}
+                  {{ x.date | date:'yyyy-MM-dd' }}
                 </li>
                 <li class="card-list-item">
                   <i class="bi bi-calendar"></i>
@@ -42,12 +86,21 @@
               </ul>
             </div>
             <div class="button-container">
-              <a [routerLink]="['/details', x.id]" class="btn btn-outline-primary"><i
+              <a [routerLink]="['/details', x.id]" class="btn btn-primary"><i
                   class="bi bi-info-circle-fill"></i> View Details</a>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
+  <div class="text-center">
+    <div class="pagination">
+      <button class="btn btn-primary" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <button class="btn btn-primary" (click)="onPageChange(currentPage + 1)" [disabled]="data===null">Next</button>
+    </div>
+  </div>
 </section>
+
+

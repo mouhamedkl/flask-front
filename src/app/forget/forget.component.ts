@@ -28,18 +28,18 @@ export class ForgetComponent implements OnInit {
           this.router.navigate(['/reset-password', token]);
           console.log(response.token);
           alertify.set('notifier', 'position', 'top-center');
-          alertify.success(' Register successfully ', 1);
-          setTimeout(() => {
-            this.router.navigate(['/home']); // Replace '/dashboard' with the correct route you want to navigate to after login
-          }, 2000); // Change the delay as needed
+          alertify.success(' Check your email', 1);
+          this.router.navigate(['/home']);
         },
         (error) => {
           // Handle the API error, if needed
           console.error(error);
+          alertify.set('notifier', 'position', 'top-center');
           alertify.error("User with this email not exists");
         }
       );
     } else {
+      alertify.set('notifier', 'position', 'top-center');
       alertify.error("Error");
     }
 

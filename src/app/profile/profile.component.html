@@ -1,72 +1,311 @@
-<section id="home" class="no-padding">
-  <div id="main-slide" class="cd-hero">
-  <ul class="cd-hero-slider">
-    <li class="selected">
-      <div class="overlay2">
-        <img class="" src="assets/images/slider/bg1.jpg" alt="slider">
+<header
+  class="bg-dark py-5"
+  style="background-image: url('../../assets/images/slider2/bg3.jpg')"
+>
+  <div class="container px-5 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="text-white">Profile</h1>
+    </div>
+  </div>
+</header>
+<main class="container py-5">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <div class="card shadow-lg p-4 position-relative">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="account-settings">
+                  <div class="user-profile">
+                    <div class="user-avatar">
+                      <img
+                        src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                        alt="Maxwell Admin"
+                      />
+                    </div>
+                    <h5 class="user-name">{{ user.nom }} {{ user.prenom }}</h5>
+                    <h6 class="user-email">{{ user.email }}</h6>
+                  </div>
+                  <div class="about">
+                    <button
+                      type="button"
+                      id="submit"
+                      name="submit"
+                      class="btn btn-success"
+                      (click)="edit()"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      id="submit"
+                      name="submit"
+                      class="btn btn-danger"
+                      (click)="delete()"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12" *ngIf="home" >
+            <div class="card h-100">
+              <div class="card-body">
+            
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="fullName">Username</label>
+                      <span><p>{{user.username}}</p></span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="eMail">Email</label>
+                      <span><p>{{user.email}}</p></span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="phone">Nom</label>
+                      <span><p>{{user.nom}}</p></span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="website">Prenom</label>
+                      <span><p>{{user.prenom}}</p></span>
+                    </div>
+                  </div>
+                </div>
+
+         
+              </div>
+      
+            </div>
+          </div>
+          <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12" *ngIf="val">
+            <div class="card h-100">
+              <div class="card-body">
+             <form #ngform="ngForm" >
+              <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="close(false)"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="row gutters">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h6 class="mb-2 text-primary">Personal Details</h6>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="fullName">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fullName"
+                    name="username"
+                    placeholder="Enter full name"
+                    [(ngModel)]="user.username" required
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="eMail">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="eMail"
+                    placeholder="Enter email "
+                    [(ngModel)]="user.email"
+                    name="email" required
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="phone">Nom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="phone"
+                    placeholder="Enter nom"
+                    [(ngModel)]="user.nom"
+                    name="nom" required
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="website">Prenom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="website"
+                    placeholder="Enter prenom"
+                    [(ngModel)]="user.prenom"
+                    name="prenom" required
+                  />
+                </div>
+              
+              </div>
+             
+              </div>
+             </form>
+                
+
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <button
+                        type="button"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-secondary"
+                        (click)="close(false)"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-success"
+                        (click)="update(ngform)"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row gutters">
+                  <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <h6 class="mt-3 mb-2 text-primary">change Password</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="Street">Current Password </label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          [(ngModel)]="currentPassword"
+                          id="Street"
+                          placeholder="Enter password "
+                        />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="ciTy">New Password</label>
+                        <input
+                          type="password"
+                          [(ngModel)]="newPassword"
+                          class="form-control"
+                          id="ciTy"
+                          placeholder="Enter password"
+                        />
+                      </div>
+                      <div class="alert-danger">
+                        <span>{{message}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <button
+                        type="button"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-secondary"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-success"
+                         (click)="onChangePassword()">
+                      >
+                      Change Password
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12" *ngIf="sup">
+            <div class="card h-100">
+              <div class="card-body">
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="closesup(false)"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        Are you sure you want to delete your account?
+                    </div>
+                </div>
+                
+                </div>
+
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <button
+                        type="button"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-secondary"
+                        (click)="closesup(false)"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        id="submit"
+                        name="submit"
+                        class="btn btn-danger"
+                        (click)="supprimer()"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="cd-full-width">
-        <h2>Need To Invent The Future!</h2>
-        <h3>We Making Difference To Great Things Possible</h3>
-        <a href="#0" class="btn btn-primary white cd-btn">Start Now</a>
-        <a href="#0" class="btn btn-primary solid cd-btn">Learn More</a>
-      </div> <!-- .cd-full-width -->
-    </li>
-    <li>
-      <div class="overlay2">
-        <img class="" src="assets/images/slider/bg2.jpg" alt="slider">
-      </div>
-      <div class="cd-half-width">
-        <h2>How Big Can You Dream?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</p>
-        <a href="#0" class="cd-btn btn btn-primary solid">Take a Tour</a>
-      </div> <!-- .cd-half-width -->
-
-      <div class="cd-half-width cd-img-container">
-        <img src="assets/images/slider/bg-thumb1.png" alt="">
-      </div> <!-- .cd-half-width.cd-img-container -->
-    </li>
-    <li>
-      <div class="overlay2">
-        <img class="" src="assets/images/slider/bg3.jpg" alt="slider">
-      </div>
-      <div class="cd-half-width cd-img-container img-right">
-        <img src="assets/images/slider/bg-thumb2.png" alt="">
-      </div> <!-- .cd-half-width.cd-img-container -->
-      <div class="cd-half-width">
-        <h2>Your Challenge is Our Progress</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</p>
-        <a href="#0" class="cd-btn btn btn-primary white">Start</a>
-        <a href="#0" class="cd-btn btn secondary btn-primary solid">Learn More</a>
-      </div> <!-- .cd-half-width -->
-    </li>
-    <li class="cd-bg-video">
-      <div class="cd-full-width">
-        <h2>WE ARE HERE TO MAKE IT HAPPEN</h2>
-        <h3>We Making Difference To Great Things Possible</h3>
-
-        <a href="#0" class="cd-btn btn btn-primary solid">Learn more</a>
-      </div> <!-- .cd-full-width -->
-
-      <div class="cd-bg-video-wrapper" data-video="videos/video">
-        <!-- video element will be loaded using jQuery -->
-      </div> <!-- .cd-bg-video-wrapper -->
-    </li>
-  </ul> <!--/ cd-hero-slider -->
-
-<div class="cd-slider-nav">
-  <nav>
-    <span class="cd-marker item-1"></span>
-    <ul>
-      <li class="selected"><a href="#0"><i class="fa fa-bicycle"></i> Invent</a></li>
-      <li><a href="#0"><i class="fa fa-hotel"></i> Dream</a></li>
-      <li><a href="#0"><i class="fa fa-android"></i> Tech</a></li>
-      <li class="video"><a href="#0"><i class="fa fa-video-camera"></i> Video</a></li>
-    </ul>
-  </nav>
-</div> <!-- .cd-slider-nav -->
-
-</div><!--/ Main slider end -->
-</section> <!--/ Slider end -->
-
-
+    </div>
+  </div>
+</main>

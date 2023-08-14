@@ -23,15 +23,13 @@ export class RegisterComponent implements OnInit {
         (response: any) => {
           console.log("Response", response);
           alertify.set('notifier', 'position', 'top-center');
-          alertify.success(' Login successfully ',1);
-          setInterval(()=>{
-            this.router.navigate(['/login'])
-          },2000)
-
+          alertify.success(' Resigter successfully ',1);
+          this.router.navigate(['/login'])
         },
         (error) => {
           // Handle the API error, if needed
           console.error(error);
+          alertify.set('notifier', 'position', 'top-center');
           alertify.error("User with this email already exists");
         }
       );
