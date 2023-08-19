@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   logout(){
     this.api.logout()
     this.router.navigate(['/home'])
-  
+
   }
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -28,5 +28,5 @@ export class AppComponent implements OnInit {
   isNewPasswordRoute(): boolean {
     return this.router.url.startsWith('/newpassword/');
   }
- 
+
 }

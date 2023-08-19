@@ -1,0 +1,25 @@
+
+@keyframes pulse {
+  0%{
+      transform: scale(0.15);
+  }
+  50%{
+      opacity: 1;
+  }
+  100%{
+      transform: scale(1);
+      opacity: 0;
+  }
+}
+.loader{
+  
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: red;
+  animation: pulse 0.85s infinite linear;
+}
+.dv1{
+  padding-top: 20%;
+}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../Model/Users';
 import { NgForm } from '@angular/forms';
 import { Email } from '../Model/Emails';
@@ -57,9 +57,9 @@ export class ApiService {
 updateUser(email:NgForm,id:number): Observable<User> {
   const accessToken = this.getToken();
   const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
-  
+
   return this.http.put<User>("http://127.0.0.1:5000/users/" + id, email,{ headers })
-  
+
 }
 changePassword(userId: number, currentPassword: string, newPassword: string): Observable<any> {
   const data = {
@@ -127,6 +127,18 @@ changePassword(userId: number, currentPassword: string, newPassword: string): Ob
   }
   filterEmails(domaine: any): Observable<any> {
     return this.http.post<any>("http://127.0.0.1:5001/filter_emails",domaine);
+  }
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loading$ = this.loadingSubject.asObservable();
+
+
+
+  showLoading() {
+    this.loadingSubject.next(true);
+  }
+
+  hideLoading() {
+    this.loadingSubject.next(false);
   }
 
 }

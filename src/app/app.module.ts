@@ -16,6 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { ContatcComponent } from './contatc/contatc.component';
 import { HomeComponent } from './home/home.component';
 import { SavedEmailsComponent } from './saved-emails/saved-emails.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    Ng2SearchPipeModule,
 
   ],
   providers: [],

@@ -93,4 +93,28 @@ data: any[] = [];
       }
     );
   }
+  items: { name: string, category: string }[] = [
+    { name: 'Item 1', category: 'Category A' },
+    { name: 'Item 2', category: 'Category B' },
+    { name: 'Item 3', category: 'Category A' },
+    { name: 'Item 4', category: 'Category C' },
+    { name: 'Item 5', category: 'Category B' },
+  ];
+
+  filterText: string = '';
+  selectedCategory: string = '';
+
+  get filteredItems() {
+    const searchText = this.filterText.toLowerCase();
+    return this.items.filter(item =>
+      item.name.toLowerCase().includes(searchText) ||
+      item.category.toLowerCase().includes(searchText)
+    ).filter(item =>
+      !this.selectedCategory || item.category.toLowerCase() === this.selectedCategory.toLowerCase()
+    );
+  }
+
+  get categories() {
+    return [...new Set(this.items.map(item => item.category))];
+  }
 }
