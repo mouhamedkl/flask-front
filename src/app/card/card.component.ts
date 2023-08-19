@@ -30,6 +30,7 @@ export class CardComponent implements OnInit {
      this.test = JSON.parse(storedTest);
    }
    this.loadData(this.currentPage);
+
   }
   onSave(email: Email) {
     console.log(this.test);
@@ -74,47 +75,42 @@ data: any[] = [];
     this.currentPage = page;
     this.loadData(this.currentPage);
   }
-  filterEmails(domaine: any) {
+  selectedDomain: string = '';
+  selectedOffre: string = '';
+  selectedlocation: string = '';
+  val=false
+  msg=''
+  filterEmails(domaine: any,subject:any,location:any) {
+    console.log(this.selectedDomain,this.selectedOffre);
+    this.val=false
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
     const data = {
-      'domaine': domaine
+      'domaine': domaine,
+      "subject": subject,
+      "location":location
     };
 
     this.http.post('http://127.0.0.1:5001/filter_emails', data, { headers: headers }).subscribe(
       (response:any) => {
         console.log(response);
         this.data=response
+        if (this.data.length==0) {
+          this.val=true
+          this.msg="Aucun data here ... try again😊"
+       }
       },
       error => {
         console.error(error);
       }
     );
+
   }
-  items: { name: string, category: string }[] = [
-    { name: 'Item 1', category: 'Category A' },
-    { name: 'Item 2', category: 'Category B' },
-    { name: 'Item 3', category: 'Category A' },
-    { name: 'Item 4', category: 'Category C' },
-    { name: 'Item 5', category: 'Category B' },
-  ];
 
   filterText: string = '';
   selectedCategory: string = '';
 
-  get filteredItems() {
-    const searchText = this.filterText.toLowerCase();
-    return this.items.filter(item =>
-      item.name.toLowerCase().includes(searchText) ||
-      item.category.toLowerCase().includes(searchText)
-    ).filter(item =>
-      !this.selectedCategory || item.category.toLowerCase() === this.selectedCategory.toLowerCase()
-    );
-  }
 
-  get categories() {
-    return [...new Set(this.items.map(item => item.category))];
-  }
 }
