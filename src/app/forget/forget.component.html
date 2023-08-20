@@ -1,39 +1,39 @@
 <div class="container py-5">
   <div class="row">
-      <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-              <div class="panel panel-default">
-                  <div class="panel-body">
-                      <div class="text-center">
-                        <h3><i class="fa fa-lock fa-4x"></i></h3>
-                        <h2 class="text-center">Forgot Password?</h2>
-                        <p>You can reset your password here.</p>
-                          <div class="panel-body">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default shadow-animation panel-background-animation">
 
-                            <form class="form" #f="ngForm">
-                              <fieldset>
-                                <div class="form-group">
-                                  <div *ngIf="email.touched && email.invalid" class="text-danger">
-                                    <div *ngIf="email.errors?.['required']">Email is required.</div>
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                        
-                                    <input id="emailInput" type="email" placeholder="email address" class="form-control" #email="ngModel" [(ngModel)]="user.email" name="email"   required>
-                                   
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <input class="btn btn-lg btn-primary btn-block" value="Send My Password" (click)="send(f)" [disabled]="f.invalid" type="submit">
-                                </div>
-                              </fieldset>
-                            </form>
+        <div class="panel-body">
+          <div class="text-end"><a routerLink="/login"><i class="fa fa-close" aria-hidden="true"></i></a></div>
+          <div class="text-center">
+            <h3><i class="fa fa-lock fa-4x"></i></h3>
+            <h2 class="text-center">Forgot Password?</h2>
+            <p>You can reset your password here.</p>
+              <div class="panel-body">
 
-                          </div>
+                <form class="form" #f="ngForm">
+                  <fieldset>
+                    <div class="form-group">
+                      <div *ngIf="email.touched && email.invalid" class="text-danger">
+                        <div *ngIf="email.errors?.['required']">Email is required.</div>
                       </div>
-                  </div>
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+
+                        <input id="emailInput" type="email" placeholder="email address" class="form-control" #email="ngModel" [(ngModel)]="user.email" name="email"   required>
+
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input class="btn btn-lg btn-primary btn-block" value="Send My Password" (click)="send(f)" [disabled]="f.invalid" type="submit">
+                    </div>
+                  </fieldset>
+                </form>
+
               </div>
           </div>
       </div>
+      </div>
+    </div>
   </div>
 </div>

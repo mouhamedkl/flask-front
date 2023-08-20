@@ -6,7 +6,7 @@
             <!-- Logo start -->
             <div class="navbar-header">
 
-              <div class="navbar-brand navbar-bg">
+              <div class="navbar-brand navbar-bg" *ngIf="!api.getIsLoggedIn()" >
                 <a routerLink="/home">
                   <img class="img-fluid" src="assets/images/log.png" alt="logo">
                 </a>
@@ -40,7 +40,6 @@
             <a role="button" (click)="logout()"  class="dropdown"  *ngIf="api.getIsLoggedIn()"  style="color: #f9f9f9;" >logout </a>
         </li>
           <li><a name="" id="" class="btn btn-primary" style="background-color: #ee3b24;" *ngIf="!api.getIsLoggedIn()"  routerLink="/login" role="button">Login</a></li>
-          <li><a name="" id="" class="btn btn-primary" style="background-color: #ffffff;margin-left: 5px;" *ngIf="!api.getIsLoggedIn()"  routerLink="/register" role="button">Sign up</a></li>
            </nav>
         </div><!--/ Row end -->
     </div><!--/ Container end -->
@@ -49,7 +48,7 @@
 </ng-container>
 <router-outlet></router-outlet>
 	<!-- Footer start -->
-	<footer id="footer" class="footer" >
+	<footer id="footer" class="footer" *ngIf="!hideNavbar">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-sm-12 footer-widget">

@@ -21,12 +21,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.hideNavbar = ['/login', '/register' ,'/forget'].includes(this.router.url) || this.isNewPasswordRoute();
+        this.hideNavbar = ['/login', '/register' ,'/forget','/404'].includes(this.router.url) || this.isNewPasswordRoute() || this.isconfirmRoute();
       }
     });
   }
   isNewPasswordRoute(): boolean {
     return this.router.url.startsWith('/newpassword/');
   }
+  isconfirmRoute(): boolean {
+    return this.router.url.startsWith('/confirm/');
+  }
+
 
 }

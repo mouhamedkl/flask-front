@@ -15,7 +15,12 @@ export class ApiService {
   saveToken(token: string): void {
     localStorage.setItem(this.TOKEN_KEY, token);
   }
-
+  saveToken1(name:string,token: string): void {
+    localStorage.setItem(name, token);
+  }
+  getToken1(name:string): string | null {
+    return localStorage.getItem(name);
+  }
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);
   }
@@ -35,7 +40,7 @@ export class ApiService {
     return this.http.get("http://127.0.0.1:5001/email/"+id);
   }
   addUser(user:NgForm):Observable<User>{
-    return this.http.post<User>("http://127.0.0.1:5000/users",user);
+    return this.http.post<User>("http://127.0.0.1:5000/users/add",user);
   }
   getuserbyid(id:number):Observable<User>{
     const accessToken=this.getToken()
@@ -96,6 +101,10 @@ changePassword(userId: number, currentPassword: string, newPassword: string): Ob
 
     return this.http.post<User>(`http://127.0.0.1:5000/newpassword/${this.token}`,payload);
   }
+  contact(name:any,email:any,message:any):Observable<any>{
+    const payload = { name: name,email:email,message:message };
+    return this.http.post<any>(`http://127.0.0.1:5000/api/contact`,payload);
+  }
   apply(f:FormData):Observable<any>{
     return this.http.post<any>('http://127.0.0.1:5001/send_email', f);
   }
@@ -128,17 +137,10 @@ changePassword(userId: number, currentPassword: string, newPassword: string): Ob
   filterEmails(domaine: any): Observable<any> {
     return this.http.post<any>("http://127.0.0.1:5001/filter_emails",domaine);
   }
-  private loadingSubject = new BehaviorSubject<boolean>(false);
-  public loading$ = this.loadingSubject.asObservable();
-
-
-
-  showLoading() {
-    this.loadingSubject.next(true);
+  getconfirmation():Observable<any>{
+    const email=this.getToken1("email-confirm")
+    return  this.http.get<any>(`http://127.0.0.1:5000/confirm/${email}`);
   }
 
-  hideLoading() {
-    this.loadingSubject.next(false);
-  }
 
 }

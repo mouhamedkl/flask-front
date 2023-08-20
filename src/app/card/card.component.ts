@@ -65,6 +65,9 @@ data: any[] = [];
 
       this.data = response.data;
       this.totalSum = response.total_sum;
+      this.selectedDomain = '';
+      this.selectedOffre = '';
+      this.selectedlocation= '';
     });
   }
   logout(){
@@ -80,6 +83,9 @@ data: any[] = [];
   selectedlocation: string = '';
   val=false
   msg=''
+  capitalizeFirstLetter(value: string) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
   filterEmails(domaine: any,subject:any,location:any) {
     console.log(this.selectedDomain,this.selectedOffre);
     this.val=false

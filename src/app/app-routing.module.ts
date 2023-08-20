@@ -12,6 +12,9 @@ import { ContatcComponent } from './contatc/contatc.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SavedEmailsComponent } from './saved-emails/saved-emails.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -26,6 +29,10 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContatcComponent},
   {path:'save',component:SavedEmailsComponent,canActivate:[AuthGuard]},
+  {path:'admin',component:DashboardComponent},
+  {path:'confirm/:email',component:ConfirmComponent},
+  {path:'404',component:NotFoundComponent},
+  {path:'**',redirectTo:'/404'}
 ];
 
 @NgModule({

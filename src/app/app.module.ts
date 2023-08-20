@@ -17,6 +17,9 @@ import { ContatcComponent } from './contatc/contatc.component';
 import { HomeComponent } from './home/home.component';
 import { SavedEmailsComponent } from './saved-emails/saved-emails.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ContatcComponent,
     HomeComponent,
     SavedEmailsComponent,
+    NotFoundComponent,
+    DashboardComponent,
+    ConfirmComponent,
 
 
 
