@@ -16,7 +16,7 @@
 
 
                   <!-- Username -->
-                  <input type="email" id="form3Example3c" [(ngModel)]="user.username" name="username"  placeholder="username" class="form-control"
+                  <input type="text" id="form3Example3c" [(ngModel)]="user.username" name="username"  placeholder="username" class="form-control"
                     required #username="ngModel" />
                   <div *ngIf="username.touched && username.invalid" class="text-danger">
                     <div *ngIf="username.errors?.['required']">Username is required.</div>
@@ -43,8 +43,10 @@
                 </form>
     </div>
     <div class="form-container sign-in-container">
+      <a routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
       <form #f="ngForm">
         <h1>Sign in</h1>
+
         <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>

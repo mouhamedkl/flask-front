@@ -17,7 +17,12 @@
                   </div>
 
                   <h2 class="mb-4">Company: {{ get_email.name }}</h2>
+                  <p><strong>Title:</strong> {{ get_email.subject }}</p>
+
                   <p><strong>Skills:</strong> {{ get_email.skills }}</p>
+                  <p><strong>Email:</strong> {{ get_email.sender }}</p>
+                  <p><strong>Domaine:</strong> {{ get_email.domaine }}</p>
+
                   <p><strong>Location:</strong> {{ get_email.location }}</p>
                   <p><strong>Duration:</strong> {{ get_email.dure }}</p>
                   <p><strong>Date Creation:</strong> {{ get_email.date | date}}</p>

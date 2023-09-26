@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit , AfterViewInit {
           console.log(response.confirm);
 
          if (response.confirm===1) {
-          console.log(response);
           localStorage.setItem("accessToken", response.token);
           localStorage.setItem("id", response.id);
           this.api.saveToken(response.token)
@@ -44,7 +43,7 @@ export class LoginComponent implements OnInit , AfterViewInit {
           this.router.navigate(['/offre']); // Replace '/dashboard' with the correct route you want to navigate to after login
          } else {
           alertify.set('notifier', 'position', 'top-center');
-          alertify.error('confirm ypur mail',1);
+          alertify.error('confirm your mail',1);
          }
 
         },
@@ -52,7 +51,7 @@ export class LoginComponent implements OnInit , AfterViewInit {
           // Handle the API error, if needed
           console.error(error);
           alertify.set('notifier', 'position', 'top-center');
-          alertify.error("User with this email already exists");
+          alertify.error("User with this email not exists");
         }
       );
     } else {
@@ -68,8 +67,6 @@ export class LoginComponent implements OnInit , AfterViewInit {
           this.api.saveToken1("email-confirm",response.user[2] )
           this.router.navigate(['/confirm', response.user[2]]);
           this.api.saveToken1("confirm",response.user[6])
-          console.log("Response", response);
-
           alertify.set('notifier', 'position', 'top-center');
           alertify.success(' Resigter successfully ',1);
           this.router.navigate(['/login'])
